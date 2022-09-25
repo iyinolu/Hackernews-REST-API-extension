@@ -1,6 +1,4 @@
 import os
-from django.conf import settings
-import requests
 import pyrebase
 from api.models import Story, Comments
 
@@ -31,8 +29,6 @@ def fetch_hn_data():
 
             storyObject, status  = Story.objects.get_or_create(**storyData)
 
-            print(storyObject)
-            print('---- COMMENT -----')
             if status:
                 try:
                     for commentId in story["kids"]:
@@ -46,15 +42,7 @@ def fetch_hn_data():
                         }
                         
                         commentObj = Comments.objects.get_or_create(**commentData)[0]
-                        print(commentObj)
-                        print("")
                 except KeyError:
                     pass
             else:
                 break
-
-        print("%---------End Of Story----------%")
-        print("")
-        print("")
-        print("")
-        print("")
