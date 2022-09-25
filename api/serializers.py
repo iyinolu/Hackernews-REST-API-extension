@@ -6,11 +6,11 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comments
-        fields = ["id", "text"]
+        fields = ["id", "commentId", "text"]
 
 
 class StorySerializer(serializers.ModelSerializer):
     comments = CommentSerializer(read_only=True, many=True)
     class Meta:
         model = Story
-        fields = ["id", "title", "text", "comments"]
+        fields = ["id", "storyId", "title", "text", "comments"]

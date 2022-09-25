@@ -14,17 +14,17 @@ class Story(models.Model):
         ("pollopt", "Poll Option")
     ]
 
-    id = models.IntegerField(unique=True, null=False, blank=False, primary_key=True)
+    storyId = models.IntegerField(unique=True, null=False, blank=False)
     type = models.CharField(max_length=10, choices=STORY_TYPES, null=False, blank=False)
     title = models.CharField(null=True, blank=True, max_length=200)
-    text = models.CharField(null=True, blank=True, max_length=5000)
-    url = models.CharField(null=True, blank=True, max_length=100)
+    text = models.CharField(null=True, blank=True, max_length=10000)
+    url = models.CharField(null=True, blank=True, max_length=500)
     
     def __str__(self):
         return "%s" % (self.title)
 
 class Comments(models.Model):
-    id = models.IntegerField(unique=True, null=False, blank=False, primary_key=True)
+    commentId = models.IntegerField(unique=True, null=False, blank=False)
     text = models.CharField(null=True, blank=True, max_length=5000)
     story = models.ForeignKey(Story, on_delete=models.CASCADE, related_name="comments")
     
