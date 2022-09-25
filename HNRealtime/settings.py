@@ -139,7 +139,9 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'HNRealtime.pagination.BasicPagination',
+    'PAGE_SIZE': 5
 }
 
 CRONJOBS = [
