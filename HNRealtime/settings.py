@@ -83,14 +83,14 @@ WSGI_APPLICATION = 'HNRealtime.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config("DATABASE_NAME"),
-        'USER': config("DATABASE_USER"),
-        'PASSWORD': config("DATABASE_PASSWORD"),
-        'HOST':'localhost',
-        'PORT':'3306',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': config("DATABASE_NAME"),
+    #     'USER': config("DATABASE_USER"),
+    #     'PASSWORD': config("DATABASE_PASSWORD"),
+    #     'HOST':'localhost',
+    #     'PORT':'3306',
+    # }
 }
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
