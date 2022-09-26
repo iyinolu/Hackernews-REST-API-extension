@@ -50,6 +50,8 @@ def fetch_HN_data():
                         Comments.objects.get_or_create(**commentData)[0]
                 except KeyError:
                     pass
+            else:
+                break
 
 
 def start():
@@ -57,7 +59,7 @@ def start():
         logging.basicConfig()
         logging.getLogger('apscheduler').setLevel(logging.DEBUG)
 
-    scheduler.add_job(fetch_HN_data, trigger=CronTrigger(minute="*/2"), id="sync_test", replace_existing=True)
+    scheduler.add_job(fetch_HN_data, trigger=CronTrigger(minute="*/5"), id="sync_test", replace_existing=True)
 
     register_events(scheduler)
 
