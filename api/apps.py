@@ -6,6 +6,7 @@ class ApiConfig(AppConfig):
     name = 'api'
 
     def ready(self):
+        # Register scheduler when application is first launched.
         from . import scheduler
         if settings.SCHEDULER_AUTOSTART:
         	scheduler.start()

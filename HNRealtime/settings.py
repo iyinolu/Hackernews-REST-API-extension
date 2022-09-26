@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ["hackernews-restapi.herokuapp.com", "127.0.0.1", "localhost"]
 
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_crontab',
-    'api',
+    'api', 
     'django_apscheduler', 
 ]
 
@@ -82,6 +82,7 @@ WSGI_APPLICATION = 'HNRealtime.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# Use MySQl database in development environment with these properties
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.mysql',
@@ -93,6 +94,7 @@ DATABASES = {
     }
 }
 
+# Use Postgres database in production. Using heroku postgres addon.
 DATABASE_URL = config('DATABASE_URL')
 db_from_env = dj_database_url.config(default=DATABASE_URL, conn_max_age=500, ssl_require=True)
 DATABASES['default'].update(db_from_env)
@@ -163,7 +165,3 @@ SCHEDULER_CONFIG = {
     },
 }
 SCHEDULER_AUTOSTART = True
-
-# CRONJOBS = [
-#     ("* * * * *", "api.cron.fetch_hn_data",  '>> ' + os.path.join(BASE_DIR,'django_cron.log' + ' 2>&1 '))
-# ]

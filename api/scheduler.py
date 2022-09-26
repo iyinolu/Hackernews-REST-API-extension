@@ -1,10 +1,8 @@
 import logging
-import os
 import pyrebase
 from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.executors.pool import ProcessPoolExecutor, ThreadPoolExecutor
 from apscheduler.triggers.cron import CronTrigger
-from django_apscheduler.jobstores import register_events, register_job
+from django_apscheduler.jobstores import register_events
 from api.models import Story, Comments
 from decouple import config
 from django.conf import settings
@@ -51,6 +49,9 @@ def fetch_HN_data():
                 except KeyError:
                     pass
             else:
+                # Break data fetching when an exiting story ID has been previously created.
+                # Assuming that the returned data from firebase has a consistent ordering,
+                # with lastest data at the start of the returned array [top_stories].
                 break
 
 
