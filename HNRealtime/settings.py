@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_crontab',
     'api',
-    'django_apscheduler', 
+    # 'django_apscheduler', 
 ]
 
 MIDDLEWARE = [
