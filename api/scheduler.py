@@ -7,11 +7,7 @@ from apscheduler.triggers.cron import CronTrigger
 from django_apscheduler.jobstores import register_events, register_job
 from api.models import Story, Comments
 from decouple import config
-
 from django.conf import settings
-import environ
-
-env = environ.Env()
 
 scheduler = BackgroundScheduler(settings.SCHEDULER_CONFIG)
 
