@@ -25,6 +25,7 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycodestyle==2.9.1
 pycryptodome==3.4.3
+psycopg2==2.9.1
 PyJWT==2.4.0
 pyparsing==3.0.9
 Pyrebase==3.0.27
