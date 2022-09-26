@@ -50,8 +50,6 @@ def fetch_HN_data():
                         Comments.objects.get_or_create(**commentData)[0]
                 except KeyError:
                     pass
-            else:
-                break
 
 
 def start():
